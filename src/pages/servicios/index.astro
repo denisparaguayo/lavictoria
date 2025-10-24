@@ -1,11 +1,81 @@
 ---
 import SiteLayout from '../../layouts/SiteLayout.astro';
-import ServiciosGrid from '../../components/ServiciosGrid.astro';
-import { servicios } from '../../data/servicios.js';
+import { getCollection } from 'astro:content';
+
+const servicios = await getCollection('servicios');
+// Orden alfabético por título (o cambiá a fecha si agregás un campo date)
+const items = servicios
+	.map((s) => ({ slug: s.slug, ...s.data }))
+	.sort((a, b) => a.title.localeCompare(b.title));
 ---
 
 <SiteLayout
 	title="Servicios – Marmolería La Victoria"
-	description="Mesadas, islas, baños, escaleras, quinchos y muebles en melamina.">
-	<ServiciosGrid items={servicios} />
+	description="Mesadas de cocina, baños, quinchos, islas, escaleras y muebles a medida en mármol y granito.">
+	<nav
+		aria-label="breadcrumb"
+		class="mx-auto max-w-6xl px-4 pt-6 text-sm text-neutral-600">
+		<a href="/" class="hover:text-neutral-800">Inicio</a>
+		<span class="mx-2">/</span>
+		<span class="text-neutral-800">Servicios</span>
+	</nav>
+
+	<section class="mx-auto max-w-7xl px-4 py-12">
+		<header class="mb-10 text-center">
+			<h1 class="text-3xl font-semibold font-display">Nuestros Servicios</h1>
+			<p class="mt-2 text-neutral-600">
+				Fabricación e instalación a medida en mármol, granito, cuarzo y
+				melamina.
+			</p>
+		</header>
+
+		<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+			{
+				items.map((s) => (
+					<a
+						href={`/servicios/${s.slug}`}
+						class="group overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm hover:shadow-md transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-600">
+						<div class="aspect-[4/3] bg-neutral-100 overflow-hidden">
+							{s.cover ? (
+								<img
+									src={s.cover}
+									alt={s.title}
+									class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+									loading="lazy"
+								/>
+							) : (
+								<div class="h-full w-full grid place-items-center text-neutral-400 text-sm">
+									Sin imagen
+								</div>
+							)}
+						</div>
+						<div class="p-5">
+							<h2 class="text-lg font-semibold font-display">{s.title}</h2>
+							{s.description && (
+								<p class="mt-1 text-sm text-neutral-600 line-clamp-2">
+									{s.description}
+								</p>
+							)}
+							<div class="mt-4 flex items-center justify-between text-sm">
+								<span class="text-neutral-500">Ver más</span>
+								<svg
+									class="h-5 w-5 text-yellow-700 group-hover:translate-x-0.5 transition-transform"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round">
+									<>
+										<path d="M5 12h14" />
+										<path d="m12 5 7 7-7 7" />
+									</>
+								</svg>
+							</div>
+						</div>
+					</a>
+				))
+			}
+		</div>
+	</section>
 </SiteLayout>

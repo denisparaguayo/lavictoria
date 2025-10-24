@@ -3,7 +3,7 @@ export const servicios = [
 		titulo: 'Mesadas de Cocina',
 		descripcion:
 			'Diseños personalizados en mármol, granito o cuarzo, a medida.',
-		imagen: '/img/servicios/mesadas.jpg',
+
 		slug: 'mesadas-de-cocina',
 		puntos: [
 			'Corte y pulido de alta precisión',
@@ -26,8 +26,8 @@ export const servicios = [
 		titulo: 'Baños',
 		descripcion:
 			'Vanitorys, lavamanos y revestimientos con terminación premium.',
-		imagen: '/img/servicios/banos.jpg',
-		slug: 'baños',
+
+		slug: 'banos',
 		puntos: [
 			'Resistencia a la humedad',
 			'Variedad de materiales',
@@ -37,7 +37,7 @@ export const servicios = [
 	{
 		titulo: 'Escaleras',
 		descripcion: 'Peldaños y revestimientos en mármol o granito.',
-		imagen: '/img/servicios/escaleras.jpg',
+
 		slug: 'escaleras',
 		puntos: [
 			'Terminaciones antideslizantes',
@@ -48,7 +48,7 @@ export const servicios = [
 	{
 		titulo: 'Quinchos y Exteriores',
 		descripcion: 'Mesadas y barras resistentes para áreas sociales.',
-		imagen: '/img/servicios/quinchos.jpg',
+
 		slug: 'quinchos-y-exteriores',
 		puntos: [
 			'Alta resistencia',
@@ -59,7 +59,7 @@ export const servicios = [
 	{
 		titulo: 'Muebles en Melamina',
 		descripcion: 'Placares, cocinas y muebles a medida en melamina.',
-		imagen: '/img/servicios/melamina.jpg',
+
 		slug: 'muebles-en-melamina',
 		puntos: [
 			'Herrajes de calidad',

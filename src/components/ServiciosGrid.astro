@@ -1,43 +1,44 @@
 ---
-import { servicios as dataServicios } from '../data/servicios.js';
-const {
-	items = dataServicios,
-	title = 'Nuestros Servicios',
-	subtitle = 'Fabricamos piezas únicas y a medida',
-} = Astro.props;
+import { getCollection } from 'astro:content';
 
-const cover = (slug) => `/img/servicios/${slug}/cover.jpg`;
-const coverWebp = (slug) => `/img/servicios/${slug}/cover.webp`;
+const servicios = await getCollection('servicios');
 ---
 
-<section id="servicios" class="mx-auto max-w-7xl px-4 py-16">
-	<div class="text-center mb-10">
-		<h2 class="text-3xl font-semibold font-display">{title}</h2>
-		<p class="mt-2 text-neutral-600">{subtitle}</p>
-	</div>
+<section class="mx-auto max-w-7xl px-4 py-12">
+	<header class="mb-10 text-center">
+		<h1 class="text-3xl font-semibold font-display">Nuestros Servicios</h1>
+		<p class="mt-2 text-neutral-600">
+			Fabricación e instalación a medida en mármol, granito, cuarzo y melamina.
+		</p>
+	</header>
 
 	<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 		{
-			items.map((s) => (
+			servicios.map((s) => (
 				<a
 					href={`/servicios/${s.slug}`}
 					class="group overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm hover:shadow-md transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-600">
 					<div class="aspect-[4/3] bg-neutral-100 overflow-hidden">
-						<picture>
-							<source srcset={coverWebp(s.slug)} type="image/webp" />
+						{s.data.cover ? (
 							<img
-								src={cover(s.slug)}
-								alt={s.titulo}
+								src={s.data.cover}
+								alt={s.data.title}
 								class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
 								loading="lazy"
 							/>
-						</picture>
+						) : (
+							<div class="h-full w-full grid place-items-center text-neutral-400 text-sm">
+								Sin imagen
+							</div>
+						)}
 					</div>
 					<div class="p-5">
-						<h3 class="text-lg font-semibold font-display">{s.titulo}</h3>
-						<p class="mt-1 text-sm text-neutral-600 line-clamp-2">
-							{s.descripcion}
-						</p>
+						<h2 class="text-lg font-semibold font-display">{s.data.title}</h2>
+						{s.data.description && (
+							<p class="mt-1 text-sm text-neutral-600 line-clamp-2">
+								{s.data.description}
+							</p>
+						)}
 						<div class="mt-4 flex items-center justify-between text-sm">
 							<span class="text-neutral-500">Ver más</span>
 							<svg
@@ -48,10 +49,8 @@ const coverWebp = (slug) => `/img/servicios/${slug}/cover.webp`;
 								stroke-width="2"
 								stroke-linecap="round"
 								stroke-linejoin="round">
-								<>
-									<path d="M5 12h14" />
-									<path d="m12 5 7 7-7 7" />
-								</>
+								<path d="M5 12h14" />
+								<path d="m12 5 7 7-7 7" />
 							</svg>
 						</div>
 					</div>
@@ -59,4 +58,5 @@ const coverWebp = (slug) => `/img/servicios/${slug}/cover.webp`;
 			))
 		}
 	</div>
-</section>S
+</section>;
+

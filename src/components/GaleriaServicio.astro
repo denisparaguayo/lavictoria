@@ -1,0 +1,45 @@
+---
+export interface Props {
+	slug: string;
+	title?: string;
+}
+const { slug, title = 'Galería' } = Astro.props as Props;
+
+// Glob estático relativo al archivo (desde src/components → src/assets)
+// `as: "url"` hace que Vite/Astro devuelvan SIEMPRE strings con la URL final servida
+const modules = import.meta.glob(
+	'../assets/img/servicios/**/galeria/*.{jpg,jpeg,png,webp,avif,JPG,JPEG,PNG,WEBP,AVIF}',
+	{ eager: true, as: 'url' }
+);
+
+const normalize = (p: string) => p.replace(/\\/g, '/');
+const images: string[] = Object.entries(modules)
+	.filter(([p]) => normalize(p).includes(`/servicios/${slug}/galeria/`))
+	.map(([, url]) => url as string)
+	.filter(Boolean)
+	.sort((a, b) => a.localeCompare(b));
+---
+
+{
+	images.length > 0 ? (
+		<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+			{images.map((img) => (
+				<a
+					href={img}
+					class="glightbox gallery-item block aspect-4/3 overflow-hidden rounded-2xl bg-neutral-100"
+					data-gallery="gallery">
+					<img
+						src={img}
+						alt={`${title} - foto`}
+						loading="lazy"
+						class="h-full w-full object-cover"
+					/>
+				</a>
+			))}
+		</div>
+	) : (
+		<p class="text-sm text-neutral-600">
+			Sin Galería disponible por el momento.
+		</p>
+	)
+}
