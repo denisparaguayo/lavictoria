@@ -1,0 +1,58 @@
+---
+// File: src/components/Footer.astro
+// Footer component for Marmolería La Victoria
+---
+
+<footer
+	class="mt-16 border-t border-neutral-200 bg-neutral-50 text-neutral-700">
+	<div class="mx-auto max-w-7xl px-4 py-10 grid gap-8 md:grid-cols-3">
+		<div>
+			<div class="flex items-center gap-2">
+				<svg
+					class="h-6 w-6 text-yellow-700"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					aria-hidden="true">
+					<path d="M5 6h14M7 10h10M9 14h6M8 18h8"></path>
+				</svg>
+				<span class="font-semibold" style="font-family:Cinzel,serif"
+					>Marmolería La Victoria</span
+				>
+			</div>
+			<p class="mt-3 text-sm text-neutral-600">
+				Elegancia que perdura en cada detalle. Mesadas, islas, baños, escaleras,
+				quinchos y muebles en melamina — sobre pedido y a medida.
+			</p>
+		</div>
+		<nav class="text-sm grid gap-2">
+			<span class="font-semibold text-neutral-800">Navegación</span>
+			<a href="/" class="hover:text-yellow-700">Inicio</a>
+			<a href="/servicios" class="hover:text-yellow-700">Servicios</a>
+			<a href="#galeria" class="hover:text-yellow-700">Galería</a>
+			<a href="#proceso" class="hover:text-yellow-700">Proceso</a>
+			<a href="/contacto" class="hover:text-yellow-700">Contacto</a>
+		</nav>
+		<div class="text-sm">
+			<span class="font-semibold text-neutral-800">Contacto</span>
+			<div class="mt-2 grid gap-1">
+				<a href="https://wa.me/" class="hover:text-yellow-700">WhatsApp</a>
+				<a href="tel:+595" class="hover:text-yellow-700">+595 ___ ___</a>
+				<span>Asunción, Paraguay</span>
+			</div>
+		</div>
+	</div>
+	<div class="border-t border-neutral-200">
+		<div
+			class="mx-auto max-w-7xl px-4 py-4 text-xs text-neutral-500 flex items-center justify-between">
+			<span
+				>© {new Date().getFullYear()} Marmolería La Victoria. Todos los derechos
+				reservados.</span
+			>
+			<a href="#" class="hover:text-neutral-700">Política de privacidad</a>
+		</div>
+	</div>
+</footer>

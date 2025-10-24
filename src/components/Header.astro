@@ -1,0 +1,117 @@
+---
+// File: src/components/Header.astro
+// Responsive Header / Navbar for Marmolería La Victoria
+---
+
+<header
+	class="sticky top-0 z-50 border-b border-neutral-200 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+	<div class="mx-auto max-w-7xl px-4">
+		<div class="flex h-16 items-center justify-between">
+			<!-- Logo -->
+			<a href="/" class="flex items-center gap-3 group">
+				<svg
+					class="h-7 w-7 text-yellow-600 group-hover:text-yellow-700 transition-colors"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					aria-hidden="true">
+					<path d="M5 6h14M7 10h10M9 14h6M8 18h8"></path>
+				</svg>
+				<div>
+					<div
+						class="text-sm tracking-widest text-neutral-500 leading-none"
+						style="font-family:Cinzel,serif">
+						MARMOLERÍA
+					</div>
+					<div
+						class="-mt-0.5 text-lg font-semibold leading-none"
+						style="font-family:Cinzel,serif">
+						LA VICTORIA
+					</div>
+				</div>
+			</a>
+
+			<!-- Desktop Nav -->
+			<nav class="hidden md:flex items-center gap-8 text-sm">
+				<a href="/" class="hover:text-yellow-700">Inicio</a>
+				<a href="/servicios" class="hover:text-yellow-700">Servicios</a>
+				<a href="#galeria" class="hover:text-yellow-700">Galería</a>
+				<a href="#proceso" class="hover:text-yellow-700">Proceso</a>
+				<a href="/contacto" class="hover:text-yellow-700">Contacto</a>
+			</nav>
+
+			<!-- CTA desktop -->
+			<div class="hidden md:flex">
+				<a
+					href="https://wa.me/"
+					class="inline-flex items-center rounded-xl border border-yellow-700/30 bg-yellow-600 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-yellow-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-700">
+					Pedir presupuesto
+				</a>
+			</div>
+
+			<!-- Mobile menu button -->
+			<button
+				id="menuBtn"
+				class="md:hidden inline-flex items-center justify-center rounded-md p-2 text-neutral-700 hover:bg-neutral-100 focus:outline-none"
+				aria-label="Abrir menú">
+				<svg
+					class="h-6 w-6"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round">
+					<line x1="3" y1="6" x2="21" y2="6"></line>
+					<line x1="3" y1="12" x2="21" y2="12"></line>
+					<line x1="3" y1="18" x2="21" y2="18"></line>
+				</svg>
+			</button>
+		</div>
+	</div>
+
+	<!-- Mobile Nav Panel -->
+	<div
+		id="mobileNav"
+		class="md:hidden hidden border-t border-neutral-200 bg-white">
+		<div class="mx-auto max-w-7xl px-4 py-3">
+			<nav class="grid gap-2 text-base">
+				<a href="/" class="block rounded-lg px-2 py-2 hover:bg-neutral-50"
+					>Inicio</a
+				>
+				<a
+					href="/servicios"
+					class="block rounded-lg px-2 py-2 hover:bg-neutral-50">Servicios</a
+				>
+				<a
+					href="#galeria"
+					class="block rounded-lg px-2 py-2 hover:bg-neutral-50">Galería</a
+				>
+				<a
+					href="#proceso"
+					class="block rounded-lg px-2 py-2 hover:bg-neutral-50">Proceso</a
+				>
+				<a
+					href="/contacto"
+					class="block rounded-lg px-2 py-2 hover:bg-neutral-50">Contacto</a
+				>
+				<a
+					href="https://wa.me/"
+					class="mt-2 inline-flex items-center justify-center rounded-xl border border-yellow-700/30 bg-yellow-600 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-yellow-700"
+					>Pedir presupuesto</a
+				>
+			</nav>
+		</div>
+	</div>
+</header>
+
+<script>
+	const btn = document.getElementById('menuBtn');
+	const mobile = document.getElementById('mobileNav');
+	btn?.addEventListener('click', () => {
+		mobile?.classList.toggle('hidden');
+	});
+</script>
