@@ -1,106 +1,64 @@
 ---
-// File: src/pages/index.astro
-// Home page for Marmolería La Victoria
-
 import SiteLayout from '../layouts/SiteLayout.astro';
 import Hero from '../components/Hero.astro';
+import ServiciosGrid from '../components/ServiciosGrid.astro';
+import { servicios } from '../data/servicios.js';
+import { siteConfig } from '../config/siteConfig.js';
+import Proceso from '../components/Proceso.astro';
 ---
 
 <SiteLayout
 	title="Inicio – Marmolería La Victoria"
-	description="Mesadas, islas, baños, escaleras, quinchos y muebles en melamina — todo a medida.">
+	description={siteConfig.meta.defaultDescription}>
 	<Hero
-		title="Marmolería La Victoria"
-		subtitle="Elegancia que perdura en cada detalle"
+		title={siteConfig.name}
+		subtitle={siteConfig.slogan}
 		bgImage="/img/hero-marble.webp"
-		primary={{ label: 'Pedir presupuesto', href: 'https://wa.me/595XXXXXXXX' }}
+		primary={{ label: 'Pedir presupuesto', href: siteConfig.contact.whatsapp }}
 		secondary={{ label: 'Ver trabajos', href: '#galeria' }}
 	/>
 
-	<section id="servicios" class="mx-auto max-w-7xl px-4 py-16">
-		<div class="text-center mb-10">
-			<h2 class="text-3xl font-semibold [font-family:Cinzel,serif]">
-				Nuestros Servicios
-			</h2>
-			<p class="mt-2 text-neutral-600">
-				Fabricamos piezas únicas y a medida para cada espacio.
-			</p>
-		</div>
+	<ServiciosGrid
+		items={servicios}
+		title="Nuestros Servicios"
+		subtitle="Fabricamos piezas únicas y a medida"
+	/>
 
-		<div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-			<div
-				class="rounded-2xl border border-neutral-200 shadow-sm hover:shadow-md transition-shadow p-6 text-center">
-				<h3 class="text-xl font-semibold mb-2 [font-family:Cinzel,serif]">
-					Mesadas de Cocina
-				</h3>
-				<p class="text-sm text-neutral-600">
-					Diseños personalizados en mármol, granito o cuarzo, adaptados a tu
-					espacio.
+	<Proceso />
+
+	<section id="galeria" class="bg-neutral-50 py-16">
+		<div class="mx-auto max-w-7xl px-4">
+			<div class="text-center mb-10">
+				<h2 class="text-3xl font-semibold font-display">Galería</h2>
+				<p class="mt-2 text-neutral-600">
+					Pronto imágenes de proyectos reales.
 				</p>
 			</div>
-			<div
-				class="rounded-2xl border border-neutral-200 shadow-sm hover:shadow-md transition-shadow p-6 text-center">
-				<h3 class="text-xl font-semibold mb-2 [font-family:Cinzel,serif]">
-					Islas de Cocina
-				</h3>
-				<p class="text-sm text-neutral-600">
-					Islas modernas y funcionales, el corazón de tu cocina.
-				</p>
-			</div>
-			<div
-				class="rounded-2xl border border-neutral-200 shadow-sm hover:shadow-md transition-shadow p-6 text-center">
-				<h3 class="text-xl font-semibold mb-2 [font-family:Cinzel,serif]">
-					Baños
-				</h3>
-				<p class="text-sm text-neutral-600">
-					Vanitorys y lavamanos con acabados elegantes y duraderos.
-				</p>
-			</div>
-			<div
-				class="rounded-2xl border border-neutral-200 shadow-sm hover:shadow-md transition-shadow p-6 text-center">
-				<h3 class="text-xl font-semibold mb-2 [font-family:Cinzel,serif]">
-					Escaleras
-				</h3>
-				<p class="text-sm text-neutral-600">
-					Peldaños y revestimientos de mármol o granito para interiores o
-					exteriores.
-				</p>
-			</div>
-			<div
-				class="rounded-2xl border border-neutral-200 shadow-sm hover:shadow-md transition-shadow p-6 text-center">
-				<h3 class="text-xl font-semibold mb-2 [font-family:Cinzel,serif]">
-					Quinchos y Exteriores
-				</h3>
-				<p class="text-sm text-neutral-600">
-					Mesadas y barras resistentes para parrilleros y áreas sociales.
-				</p>
-			</div>
-			<div
-				class="rounded-2xl border border-neutral-200 shadow-sm hover:shadow-md transition-shadow p-6 text-center">
-				<h3 class="text-xl font-semibold mb-2 [font-family:Cinzel,serif]">
-					Muebles en Melamina
-				</h3>
-				<p class="text-sm text-neutral-600">
-					Placares, cocinas y muebles modernos hechos a medida.
-				</p>
+			<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+				<div class="aspect-[4/3] rounded-2xl bg-neutral-200"></div>
+				<div class="aspect-[4/3] rounded-2xl bg-neutral-200"></div>
+				<div class="aspect-[4/3] rounded-2xl bg-neutral-200"></div>
 			</div>
 		</div>
 	</section>
 
-	<section id="contacto" class="bg-neutral-50 py-16">
+	<section id="contacto" class="py-16">
 		<div class="mx-auto max-w-3xl px-4 text-center">
-			<h2 class="text-3xl font-semibold [font-family:Cinzel,serif]">
-				Contacto
-			</h2>
+			<h2 class="text-3xl font-semibold font-display">Contacto</h2>
 			<p class="mt-2 text-neutral-600">
 				Contanos tu idea y te ayudamos a hacerla realidad.
 			</p>
-
 			<a
-				href="https://wa.me/595XXXXXXXX"
+				href={siteConfig.contact.whatsapp}
 				class="mt-6 inline-flex items-center justify-center rounded-xl border border-yellow-700/30 bg-yellow-600 px-6 py-3 text-sm font-semibold text-white shadow hover:bg-yellow-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-700">
 				Escribir por WhatsApp
 			</a>
+			<p class="mt-4 text-sm text-neutral-600">
+				o llamanos al <a
+					href={`tel:${siteConfig.contact.phone.replace(/\\s+/g, '')}`}
+					class="underline hover:text-neutral-800">{siteConfig.contact.phone}</a
+				>
+			</p>
 		</div>
 	</section>
-</SiteLayout>; ---
+</SiteLayout>

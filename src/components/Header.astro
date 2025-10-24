@@ -1,13 +1,12 @@
 ---
-// File: src/components/Header.astro
-// Responsive Header / Navbar for Marmolería La Victoria
+import { siteConfig } from '../config/siteConfig.js';
 ---
 
 <header
 	class="sticky top-0 z-50 border-b border-neutral-200 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
 	<div class="mx-auto max-w-7xl px-4">
 		<div class="flex h-16 items-center justify-between">
-			<!-- Logo -->
+			<!-- Logo / Branding -->
 			<a href="/" class="flex items-center gap-3 group">
 				<svg
 					class="h-7 w-7 text-yellow-600 group-hover:text-yellow-700 transition-colors"
@@ -22,13 +21,10 @@
 				</svg>
 				<div>
 					<div
-						class="text-sm tracking-widest text-neutral-500 leading-none"
-						style="font-family:Cinzel,serif">
+						class="text-sm tracking-widest text-neutral-500 leading-none font-display">
 						MARMOLERÍA
 					</div>
-					<div
-						class="-mt-0.5 text-lg font-semibold leading-none"
-						style="font-family:Cinzel,serif">
+					<div class="-mt-0.5 text-lg font-semibold leading-none font-display">
 						LA VICTORIA
 					</div>
 				</div>
@@ -44,11 +40,16 @@
 			</nav>
 
 			<!-- CTA desktop -->
-			<div class="hidden md:flex">
+			<div class="hidden md:flex items-center gap-4">
 				<a
-					href="https://wa.me/"
+					href={siteConfig.contact.whatsapp}
 					class="inline-flex items-center rounded-xl border border-yellow-700/30 bg-yellow-600 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-yellow-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-700">
 					Pedir presupuesto
+				</a>
+				<a
+					href={`tel:${siteConfig.contact.phone.replace(/\s+/g, '')}`}
+					class="text-sm text-neutral-700 hover:text-yellow-700">
+					{siteConfig.contact.phone}
 				</a>
 			</div>
 
@@ -99,10 +100,15 @@
 					class="block rounded-lg px-2 py-2 hover:bg-neutral-50">Contacto</a
 				>
 				<a
-					href="https://wa.me/"
-					class="mt-2 inline-flex items-center justify-center rounded-xl border border-yellow-700/30 bg-yellow-600 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-yellow-700"
-					>Pedir presupuesto</a
-				>
+					href={siteConfig.contact.whatsapp}
+					class="mt-2 inline-flex items-center justify-center rounded-xl border border-yellow-700/30 bg-yellow-600 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-yellow-700">
+					Pedir presupuesto
+				</a>
+				<a
+					href={`tel:${siteConfig.contact.phone.replace(/\s+/g, '')}`}
+					class="block text-center text-sm text-neutral-700 mt-2">
+					{siteConfig.contact.phone}
+				</a>
 			</nav>
 		</div>
 	</div>

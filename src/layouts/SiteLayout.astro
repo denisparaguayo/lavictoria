@@ -1,7 +1,4 @@
 ---
-// File: src/layouts/SiteLayout.astro
-// Main site layout for Marmolería La Victoria with SiteMeta, Header, and Footer
-
 import SiteMeta from '../components/SiteMeta.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -16,8 +13,7 @@ import '../styles/global.css';
 		image="/img/og-image.jpg"
 	/>
 
-	<body
-		class="min-h-dvh bg-white text-neutral-800 antialiased [font-:Inter,system-ui,Arial,sans-serif]">
+	<body class="min-h-dvh bg-white text-neutral-800 antialiased font-sans">
 		<Header />
 
 		<main class="relative">
@@ -26,4 +22,5 @@ import '../styles/global.css';
 
 		<Footer />
 	</body>
-</html>
+</html>;
+

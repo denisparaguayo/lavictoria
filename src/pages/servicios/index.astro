@@ -1,0 +1,11 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import ServiciosGrid from '../../components/ServiciosGrid.astro';
+import { servicios } from '../../data/servicios.js';
+---
+
+<SiteLayout
+	title="Servicios – Marmolería La Victoria"
+	description="Mesadas, islas, baños, escaleras, quinchos y muebles en melamina.">
+	<ServiciosGrid items={servicios} />
+</SiteLayout>

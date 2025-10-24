@@ -1,6 +1,5 @@
 ---
-// File: src/components/Footer.astro
-// Footer component for Marmolería La Victoria
+import { siteConfig } from '../config/siteConfig.js';
 ---
 
 <footer
@@ -19,15 +18,12 @@
 					aria-hidden="true">
 					<path d="M5 6h14M7 10h10M9 14h6M8 18h8"></path>
 				</svg>
-				<span class="font-semibold" style="font-family:Cinzel,serif"
-					>Marmolería La Victoria</span
-				>
+				<span class="font-semibold font-display">{siteConfig.name}</span>
 			</div>
-			<p class="mt-3 text-sm text-neutral-600">
-				Elegancia que perdura en cada detalle. Mesadas, islas, baños, escaleras,
-				quinchos y muebles en melamina — sobre pedido y a medida.
-			</p>
+			<p class="mt-3 text-sm text-neutral-600">{siteConfig.slogan}</p>
+			<p class="mt-2 text-sm text-neutral-600">{siteConfig.contact.schedule}</p>
 		</div>
+
 		<nav class="text-sm grid gap-2">
 			<span class="font-semibold text-neutral-800">Navegación</span>
 			<a href="/" class="hover:text-yellow-700">Inicio</a>
@@ -36,21 +32,73 @@
 			<a href="#proceso" class="hover:text-yellow-700">Proceso</a>
 			<a href="/contacto" class="hover:text-yellow-700">Contacto</a>
 		</nav>
+
 		<div class="text-sm">
 			<span class="font-semibold text-neutral-800">Contacto</span>
 			<div class="mt-2 grid gap-1">
-				<a href="https://wa.me/" class="hover:text-yellow-700">WhatsApp</a>
-				<a href="tel:+595" class="hover:text-yellow-700">+595 ___ ___</a>
-				<span>Asunción, Paraguay</span>
+				<a href={siteConfig.contact.whatsapp} class="hover:text-yellow-700"
+					>WhatsApp</a
+				>
+				<a
+					href={`tel:${siteConfig.contact.phone.replace(/\s+/g, '')}`}
+					class="hover:text-yellow-700">{siteConfig.contact.phone}</a
+				>
+				<span>{siteConfig.contact.address}</span>
+				<a
+					href={`mailto:${siteConfig.contact.email}`}
+					class="hover:text-yellow-700">{siteConfig.contact.email}</a
+				>
+			</div>
+			<div class="flex gap-3 mt-3">
+				<a
+					href={siteConfig.social.instagram}
+					aria-label="Instagram"
+					class="hover:text-yellow-700">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="h-5 w-5"
+						><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path
+							d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line
+							x1="17.5"
+							y1="6.5"
+							x2="17.51"
+							y2="6.5"></line></svg
+					>
+				</a>
+				<a
+					href={siteConfig.social.facebook}
+					aria-label="Facebook"
+					class="hover:text-yellow-700">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="h-5 w-5"
+						><path
+							d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+						></path></svg
+					>
+				</a>
 			</div>
 		</div>
 	</div>
+
 	<div class="border-t border-neutral-200">
 		<div
 			class="mx-auto max-w-7xl px-4 py-4 text-xs text-neutral-500 flex items-center justify-between">
 			<span
-				>© {new Date().getFullYear()} Marmolería La Victoria. Todos los derechos
-				reservados.</span
+				>© {new Date().getFullYear()}
+				{siteConfig.name}. Todos los derechos reservados.</span
 			>
 			<a href="#" class="hover:text-neutral-700">Política de privacidad</a>
 		</div>

@@ -1,14 +1,66 @@
 ---
-// File: src/components/SiteMeta.astro
-// SEO and metadata component for Marmolería La Victoria
+import { siteConfig } from '../config/siteConfig.js';
+const title = Astro.props.title ?? siteConfig.meta.defaultTitle;
+const description =
+	Astro.props.description ?? siteConfig.meta.defaultDescription;
+const url = siteConfig.url;
+const image = siteConfig.meta.ogImage;
 
-const {
-	title = 'Marmolería La Victoria',
-	description = 'Mesadas, islas, baños, escaleras, quinchos y muebles en melamina — todo a medida.',
-	url = 'https://marmolerialavictoria.com',
-	image = '/img/og-image.jpg',
-	type = 'website',
-} = Astro.props;
+// JSON-LD objects
+const websiteLd = {
+	'@context': 'https://schema.org',
+	'@type': 'WebSite',
+	name: siteConfig.name,
+	url,
+	description,
+	inLanguage: 'es',
+	publisher: { '@type': 'Organization', name: siteConfig.name },
+	potentialAction: {
+		'@type': 'SearchAction',
+		target: `${url}/buscar?q={search_term_string}`,
+		'query-input': 'required name=search_term_string',
+	},
+};
+
+const businessLd = {
+	'@context': 'https://schema.org',
+	'@type': 'HomeAndConstructionBusiness',
+	name: siteConfig.name,
+	url,
+	image,
+	description,
+	address: {
+		'@type': 'PostalAddress',
+		addressLocality: siteConfig.contact.address || 'Asunción',
+		addressCountry: 'PY',
+	},
+	telephone: siteConfig.contact.phone,
+	areaServed: { '@type': 'Country', name: 'Paraguay' },
+	sameAs: [siteConfig.social.instagram, siteConfig.social.facebook].filter(
+		Boolean
+	),
+	openingHoursSpecification: [
+		{
+			'@type': 'OpeningHoursSpecification',
+			dayOfWeek: [
+				'Monday',
+				'Tuesday',
+				'Wednesday',
+				'Thursday',
+				'Friday',
+				'Saturday',
+			],
+			opens: '08:00',
+			closes: '18:00',
+		},
+	],
+	contactPoint: {
+		'@type': 'ContactPoint',
+		telephone: siteConfig.contact.phone,
+		contactType: 'customer service',
+		availableLanguage: ['es'],
+	},
+};
 ---
 
 <head>
@@ -17,8 +69,8 @@ const {
 	<title>{title}</title>
 	<meta name="description" content={description} />
 
-	<!-- Open Graph / Facebook -->
-	<meta property="og:type" content={type} />
+	<!-- Open Graph -->
+	<meta property="og:type" content="website" />
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
 	<meta property="og:image" content={image} />
@@ -30,10 +82,10 @@ const {
 	<meta name="twitter:description" content={description} />
 	<meta name="twitter:image" content={image} />
 
-	<!-- Canonical link -->
+	<!-- Canonical -->
 	<link rel="canonical" href={url} />
 
-	<!-- Fonts -->
+	<!-- Google Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	<link
@@ -41,6 +93,9 @@ const {
 		rel="stylesheet"
 	/>
 
-	<!-- Favicon -->
 	<link rel="icon" href="/favicon.ico" />
+
+	<!-- JSON-LD Structured Data -->
+	<script type="application/ld+json" set:html={JSON.stringify(websiteLd)} />
+	<script type="application/ld+json" set:html={JSON.stringify(businessLd)} />
 </head>
