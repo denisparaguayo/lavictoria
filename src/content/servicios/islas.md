@@ -1,7 +1,7 @@
 ---
 title: Islas de Cocina
 description: Islas centrales en mármol o granito que combinan funcionalidad, diseño y elegancia.
-cover: /src/assets/img/servicios/islas/cover.webp
+cover: /img/servicios/islas/cover.webp
 puntos:
   - Ideales para ampliar el espacio de trabajo.
   - Variedad de materiales y estilos.

@@ -1,7 +1,7 @@
 ---
 title: Barras y Mesadas para Quinchos
 description: Fabricamos barras, mesadas y espacios de trabajo en piedra natural para quinchos y áreas sociales.
-cover: /src/assets/img/servicios/quinchos/cover.webp
+cover: /img/servicios/quinchos/cover.webp
 puntos:
   - Ideal para exteriores y uso intenso.
   - Diseños rústicos o modernos.

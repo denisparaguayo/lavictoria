@@ -1,7 +1,7 @@
 ---
 title: Mesadas de Cocina
 description: Fabricación e instalación de mesadas de cocina a medida en mármol y granito.
-cover: /src/assets/img/servicios/mesadas-de-cocina/cover.webp
+cover: /img/servicios/mesadas-de-cocina/cover.webp
 
 puntos:
   - Corte y pulido profesional

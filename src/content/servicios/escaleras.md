@@ -1,7 +1,7 @@
 ---
 title: Escaleras en Mármol y Granito
 description: Diseño e instalación de escaleras en mármol o granito, elegantes y resistentes, adaptadas a cada ambiente.
-cover: /src/assets/img/servicios/escaleras/cover.webp
+cover: /img/servicios/escaleras/cover.webp
 puntos:
   - Corte e instalación profesional.
   - Acabados antideslizantes disponibles.
