@@ -1,7 +1,7 @@
 ---
 title: Mesadas y Revestimientos de Baño
 description: Diseñamos e instalamos mesadas, lavamanos y revestimientos en mármol o granito para baños modernos y elegantes.
-cover: /src/assets/img/servicios/banos/cover.webp
+cover: /img/servicios/banos/cover.webp
 puntos:
   - Superficies resistentes a la humedad.
   - Diseño a medida para cada baño.
