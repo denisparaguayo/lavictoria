@@ -3,6 +3,7 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
 import { getCollection } from 'astro:content';
 import { siteConfig } from '../../config/siteConfig.js';
 import GaleriaServicio from '../../components/GaleriaServicio.astro';
+const defaultOg = '/img/og-image.jpg';
 
 export async function getStaticPaths() {
 	const servicios = await getCollection('servicios');
@@ -20,6 +21,7 @@ const serviceUrl = `${origin}/servicios/${servicio.slug}`;
 
 <SiteLayout
 	title={`${data.title} – Marmolería La Victoria`}
+	image={data.cover ?? defaultOg}
 	description={data.description}>
 	<script
 		type="application/ld+json"
