@@ -7,8 +7,11 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
 	vite: {
 		plugins: [tailwindcss()],
+		server: {
+			allowedHosts: true,
+		},
 		preview: {
-			allowedHosts: ['marmoleria-lavictoria.mbarete.digital'],
+			allowedHosts: true,
 		},
 	},
 	legacy: {
