@@ -2,7 +2,6 @@
 import SiteLayout from '../layouts/SiteLayout.astro';
 import Hero from '../components/Hero.astro';
 import ServiciosGrid from '../components/ServiciosGrid.astro';
-import { servicios } from '../data/servicios.js';
 import { siteConfig } from '../config/siteConfig.js';
 import Proceso from '../components/Proceso.astro';
 ---
@@ -21,7 +20,6 @@ import Proceso from '../components/Proceso.astro';
 	<ServiciosGrid
 		title="Nuestros Servicios"
 		subtitle="Fabricamos piezas únicas y a medida"
-		items={servicios}
 	/>
 	<Proceso />
 
