@@ -20,7 +20,7 @@ export const siteConfig = {
 	meta: {
 		defaultTitle: 'Marmolería La Victoria',
 		defaultDescription:
-			'Mesadas, islas, baños, escaleras, quinchos y muebles en melamina — todo a medida.',
+			'Marmolería La Victoria en Asunción, Paraguay. Especialistas en mesadas de granito, mármol y cuarzo para cocinas, baños, escaleras y quinchos. Diseños a medida con calidad garantizada.',
 		ogImage: '/img/og-image.jpg',
 	},
 };
